@@ -1,12 +1,11 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import { CDBFooter, CDBFooterLink, CDBBtn, CDBIcon, CDBContainer, CDBBox } from 'cdbreact';
+import { CDBFooter, CDBBtn, CDBIcon, CDBBox } from 'cdbreact';
 import logo from '../../assets/logo.png'
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <Container className='bg-dark text-white rounded'>
+        <div style={{ backgroundColor: "rgba(0, 0, 0, .95)" }} className='text-white'>
             <CDBFooter className="shadow">
                 <CDBBox display="flex" flex="column" className="mx-auto py-5" style={{ width: '90%' }}>
                     <CDBBox display="flex" justifyContent="between" className="flex-wrap">
@@ -25,10 +24,10 @@ const Footer = () => {
                                 Devwares
                             </p>
                             <CDBBox flex="column" display="flex" style={{ cursor: 'pointer', padding: '0' }}>
-                                <CDBFooterLink href="/">Resources</CDBFooterLink>
-                                <CDBFooterLink href="/">About Us</CDBFooterLink>
-                                <CDBFooterLink href="/">Contact</CDBFooterLink>
-                                <CDBFooterLink href="/">Blog</CDBFooterLink>
+                                <p>Resources</p>
+                                <p>About Us</p>
+                                <p>Contact</p>
+                                <p>Blog</p>
                             </CDBBox>
                         </CDBBox>
                         <CDBBox>
@@ -36,9 +35,9 @@ const Footer = () => {
                                 Help
                             </p>
                             <CDBBox display="flex" flex="column" style={{ cursor: 'pointer', padding: '0' }}>
-                                <CDBFooterLink href="/">Support</CDBFooterLink>
-                                <CDBFooterLink href="/">Sign Up</CDBFooterLink>
-                                <CDBFooterLink href="/">Sign In</CDBFooterLink>
+                                <p>Support</p>
+                                <p>Sign Up</p>
+                                <p>Sign In</p>
                             </CDBBox>
                         </CDBBox>
                         <CDBBox>
@@ -46,9 +45,9 @@ const Footer = () => {
                                 Products
                             </p>
                             <CDBBox display="flex" flex="column" style={{ cursor: 'pointer', padding: '0' }}>
-                                <CDBFooterLink href="/">Windframe</CDBFooterLink>
-                                <CDBFooterLink href="/">Loop</CDBFooterLink>
-                                <CDBFooterLink href="/">Contrast</CDBFooterLink>
+                                <p>lmao</p>
+                                <p>lmao</p>
+                                <p>lmao</p>
                             </CDBBox>
                         </CDBBox>
                     </CDBBox>
@@ -74,7 +73,7 @@ const Footer = () => {
                     </CDBBox>
                 </CDBBox>
             </CDBFooter>
-        </Container>
+        </div >
     );
 };
 
