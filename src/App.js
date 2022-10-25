@@ -1,10 +1,11 @@
-import logo from './logo.svg';
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
+import { routes } from './Routes/Routes/Routes';
 
 function App() {
   return (
     <div className="App">
-      <h1 className='text-primary'>Kire mama ki khbor</h1>
+      <RouterProvider router={routes}></RouterProvider>
     </div>
   );
 }
