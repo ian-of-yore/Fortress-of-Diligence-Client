@@ -2,13 +2,20 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.png'
 
 const Header = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand><Link className='text-white text-decoration-none' to='/'>Code With Onion</Link></Navbar.Brand>
+                <Navbar.Brand>
+                    <Button variant="dark" className="d-flex align-items-center">
+                        <img className='me-2 rounded' style={{ height: "25px" }} src={logo} alt="" />
+                        <Link className='text-white text-decoration-none' to='/'>Fortress of Diligence</Link>
+                    </Button>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
