@@ -18,15 +18,15 @@ const Header = () => {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link><Link className='text-white text-decoration-none' to='/courses'>Courses</Link></Nav.Link>
-                        <Nav.Link href="#pricing">Blog</Nav.Link>
-                        <Nav.Link><Link className='text-white-50 text-decoration-none' to='/faq'>FAQ</Link></Nav.Link>
+                    <Nav className='me-auto'>
+                        <Nav.Link><Link className='text-white text-decoration-none ' to='/courses'>Courses</Link></Nav.Link>
+                        <Nav.Link><Link className='text-white text-decoration-none ' to='/blog'>Blog</Link></Nav.Link>
+                        <Nav.Link><Link className='text-white text-decoration-none ' to='/faq'>FAQ</Link></Nav.Link>
                     </Nav>
                     <Nav>
                         <Nav.Link href="#deets">Dark</Nav.Link>
                         <Nav.Link>
-                            Login
+                            <Link className='text-white text-decoration-none' to='/login'>Login</Link>
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

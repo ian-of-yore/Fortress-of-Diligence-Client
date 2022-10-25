@@ -9,9 +9,9 @@ const CourseSummary = ({ course }) => {
     const { title, author, course_id, details, image_url, info } = course;
 
     return (
-        <div className='mb-5'>
+        <div className='mb-5 shadow-lg'>
             <Link className='text-decoration-none' to={`/courses/${course_id}`}>
-                <Card text='white' style={{ height: "400px", backgroundColor: "rgba(30, 30, 30, .95)" }}>
+                <Card text='white' className='bg-dark' style={{ height: "400px" }}>
                     <Card.Img variant="top" src={image_url} style={{ height: "250px" }} />
                     <div className='d-flex justify-content-between align-items-center px-3 mt-1'>
                         <p><small>{info.students} students</small></p>
