@@ -9,17 +9,27 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 const Register = () => {
     const [termsAndConditions, setTermsAndConditions] = useState(false);
 
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photo = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
+        console.log(name, photo, email, password, confirmPassword)
+    }
+
     const handleTermsAndConditions = (event) => {
         setTermsAndConditions(event.target.checked);
     }
 
     return (
-        <Container className='my-5 w-50' style={{ minHeight: "75vh" }}>
+        <Container className='my-5 w-75' style={{ minHeight: "75vh" }}>
             <h3 className='text-white'>Register Your Credentials</h3>
             <Row>
-                <Col lg="7">
-                    <Form className='text-white text-start'>
-
+                <Col lg="9">
+                    <Form onSubmit={handleFormSubmit} className='text-white text-start w-75 mx-auto'>
                         <Form.Group className="mb-3" controlId="formBasicUserName">
                             <Form.Label>Full name</Form.Label>
                             <Form.Control type="text" name='name' placeholder="Enter your full name" />
@@ -46,7 +56,7 @@ const Register = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                            <Form.Check onClick={handleTermsAndConditions} type="checkbox" label="Accept Our Terms and Conditions" />
+                            <Form.Check onClick={handleTermsAndConditions} type="checkbox" label="Accept Terms and Conditions" />
                         </Form.Group>
 
                         <div className='d-flex justify-content-between align-items-center'>
@@ -61,7 +71,7 @@ const Register = () => {
                         </div>
                     </Form>
                 </Col>
-                <Col lg="5">
+                <Col lg="3">
                     <div className='d-flex flex-column mt-4 pt-2'>
                         <Button className='mb-3' variant='outline-light'><FaGoogle></FaGoogle> Continue with Google</Button>
                         <Button variant='outline-light'><FaGithub></FaGithub> Continue with GitHub</Button>
