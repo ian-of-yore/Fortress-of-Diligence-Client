@@ -7,60 +7,23 @@ const Footer = () => {
     return (
         <div style={{ backgroundColor: "rgba(0, 0, 0, .95)" }} className='text-white'>
             <CDBFooter className="shadow">
-                <CDBBox display="flex" flex="column" className="mx-auto py-5" style={{ width: '90%' }}>
-                    <CDBBox display="flex" justifyContent="between" className="flex-wrap">
-                        <CDBBox className="text-start">
-                            <div variant="dark" className="d-flex align-items-center">
-                                <img className='me-2 rounded' style={{ height: "25px" }} src={logo} alt="" />
-                                <Link className='text-light text-decoration-none' to='/'>Fortress of Diligence</Link>
-                            </div>
-                            <p className="my-3" style={{ width: '250px' }}>
-                                We are creating High Quality Resources and tools to Aid developers during the
-                                developement of their projects
-                            </p>
-                        </CDBBox>
-                        <CDBBox>
-                            <p className="h5 mb-4" style={{ fontWeight: '600' }}>
-                                Devwares
-                            </p>
-                            <CDBBox flex="column" display="flex" style={{ cursor: 'pointer', padding: '0' }}>
-                                <p>Resources</p>
-                                <p>About Us</p>
-                                <p>Contact</p>
-                                <p>Blog</p>
-                            </CDBBox>
-                        </CDBBox>
-                        <CDBBox>
-                            <p className="h5 mb-4" style={{ fontWeight: '600' }}>
-                                Help
-                            </p>
-                            <CDBBox display="flex" flex="column" style={{ cursor: 'pointer', padding: '0' }}>
-                                <p>Support</p>
-                                <p>Sign Up</p>
-                                <p>Sign In</p>
-                            </CDBBox>
-                        </CDBBox>
-                        <CDBBox>
-                            <p className="h5 mb-4" style={{ fontWeight: '600' }}>
-                                Products
-                            </p>
-                            <CDBBox display="flex" flex="column" style={{ cursor: 'pointer', padding: '0' }}>
-                                <p>lmao</p>
-                                <p>lmao</p>
-                                <p>lmao</p>
-                            </CDBBox>
-                        </CDBBox>
+                <CDBBox
+                    display="flex"
+                    justifyContent="between"
+                    alignItems="center"
+                    className="mx-auto py-4 flex-wrap"
+                    style={{ width: '80%' }}
+                >
+                    <CDBBox display="flex" alignItems="center">
+                        <div className="d-flex align-items-center p-0 text-dark">
+                            <img style={{ height: "20px" }} src={logo} alt="" />
+                            <span className="ml-4 h5 mb-0 font-weight-bold text-white ms-2">Fortress of Diligence</span>
+                        </div>
                     </CDBBox>
-                    <CDBBox
-                        display="flex"
-                        justifyContent="center"
-                        alignItems="center"
-                        style={{ width: '100%' }}
-                        className="mx-auto mt-4"
-                    >
-                        <small className="text-center" style={{ width: '50%' }}>
-                            &copy; Fortress of Diligence. All rights reserved.
-                        </small>
+                    <CDBBox>
+                        <small className="ml-2">&copy; Fortress of Diligence, 2022. All rights reserved.</small>
+                    </CDBBox>
+                    <CDBBox display="flex">
                         <CDBBtn flat color="dark" className="p-2">
                             <CDBIcon fab icon="facebook-f" />
                         </CDBBtn>
