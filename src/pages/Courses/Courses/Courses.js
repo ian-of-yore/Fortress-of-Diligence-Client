@@ -18,6 +18,7 @@ const Courses = () => {
                             courses.map(course => <LeftSideNav
                                 key={course.course_id}
                                 title={course.title}
+                                id={course.course_id}
                             ></LeftSideNav>)
                         }
                     </Col>

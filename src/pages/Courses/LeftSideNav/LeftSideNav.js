@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const LeftSideNav = ({ title }) => {
+const LeftSideNav = ({ title, id }) => {
     return (
-        <div>
-            <h5>{title}</h5>
+        <div className='border border-danger mb-4'>
+            <h5><Link className='text-decoration-none' to={`/courses/${id}`}>{title.slice(0, 30)}</Link></h5>
         </div>
     );
 };
