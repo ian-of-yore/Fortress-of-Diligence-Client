@@ -14,6 +14,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses',
+                loader: () => fetch('https://server-code-with-onion.vercel.app/courses'),
                 element: <Courses></Courses>
             }
         ]

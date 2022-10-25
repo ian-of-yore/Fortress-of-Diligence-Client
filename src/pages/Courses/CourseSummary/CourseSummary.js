@@ -1,9 +1,15 @@
 import React from 'react';
 
-const CourseSummary = () => {
+const CourseSummary = ({ course }) => {
+    console.log(course)
+
+    const { title, author } = course;
+
     return (
-        <div>
-            <h5>This is the Course Summary Component</h5>
+        <div className='border border-dark'>
+            <h5>{title}</h5>
+            <p>{author.name}</p>
+
         </div>
     );
 };

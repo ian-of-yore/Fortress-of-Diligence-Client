@@ -1,9 +1,9 @@
 import React from 'react';
 
-const LeftSideNav = () => {
+const LeftSideNav = ({ title }) => {
     return (
         <div>
-            <h5>This is the Left Side Navbar</h5>
+            <h5>{title}</h5>
         </div>
     );
 };
