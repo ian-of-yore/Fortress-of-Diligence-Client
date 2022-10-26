@@ -20,7 +20,7 @@ const Login = () => {
         const password = form.password.value;
         // console.log(email, password)
         signInEmailPassword(email, password)
-            .then((result) => console.log(result.user))
+            .then((result) => { })
             .catch((error) => console.error(error))
     }
 

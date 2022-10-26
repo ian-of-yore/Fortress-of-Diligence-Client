@@ -5,8 +5,23 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png'
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { Image } from 'react-bootstrap';
+import { FaUserNinja } from "react-icons/fa";
 
 const Header = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then((result) => console.log(result.user))
+            .catch((error) => console.error(error))
+    }
+
+    console.log(user);
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -23,10 +38,37 @@ const Header = () => {
                         <Nav.Link><Link className='text-white text-decoration-none ' to='/blog'>Blog</Link></Nav.Link>
                         <Nav.Link><Link className='text-white text-decoration-none ' to='/faq'>FAQ</Link></Nav.Link>
                     </Nav>
-                    <Nav>
-                        <Nav.Link href="#deets">Dark</Nav.Link>
+                    <Nav className='d-flex align-items-top'>
                         <Nav.Link>
-                            <Link className='text-white text-decoration-none' to='/login'>Login</Link>
+                            {
+                                user?.uid ?
+                                    <>
+                                        <p data-toggle="tooltip"
+                                            data-placement="top"
+                                            title={user?.displayName}>
+                                            {
+                                                user?.photoURL ? <Image roundedCircle src={user?.photoURL} style={{ height: '30px' }}></Image> : <FaUserNinja></FaUserNinja>
+                                            }
+                                        </p>
+
+                                    </>
+                                    :
+                                    <>
+                                    </>
+                            }
+                        </Nav.Link>
+                        <Nav.Link>
+                            {
+                                user?.uid ?
+                                    <>
+                                        <Button variant='dark' size="sm"><Link onClick={handleLogOut} className='text-white text-decoration-none'>LogOut</Link></Button>
+
+                                    </>
+                                    :
+                                    <>
+                                        <Button variant='dark' size="sm"><Link className='text-white text-decoration-none' to='/login'>LogIn</Link></Button>
+                                    </>
+                            }
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
