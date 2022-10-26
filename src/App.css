@@ -2,6 +2,10 @@ body {
   background-color: #232324 !important;
 }
 
+p {
+  margin-bottom: 0 !important;
+}
+
 .App {
   text-align: center;
 }
