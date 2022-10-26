@@ -9,10 +9,12 @@ import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { Image } from 'react-bootstrap';
 import { FaUserNinja } from "react-icons/fa";
+import { useState } from 'react';
 
 const Header = () => {
 
     const { user, logOut } = useContext(AuthContext);
+    const [isDark, setIsDark] = useState(true);
 
     const handleLogOut = () => {
         logOut()
@@ -69,6 +71,9 @@ const Header = () => {
                                         <Button variant='dark' size="sm"><Link className='text-white text-decoration-none' to='/login'>LogIn</Link></Button>
                                     </>
                             }
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Button size="sm" variant="dark" onClick={() => setIsDark(!isDark)}>{isDark ? 'Dark' : 'Light'}</Button>
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
