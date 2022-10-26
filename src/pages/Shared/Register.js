@@ -5,9 +5,15 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Register = () => {
     const [termsAndConditions, setTermsAndConditions] = useState(false);
+
+    const { signInProvider } = useContext(AuthContext);
+
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
@@ -22,6 +28,21 @@ const Register = () => {
 
     const handleTermsAndConditions = (event) => {
         setTermsAndConditions(event.target.checked);
+    }
+
+    const providerGoogle = new GoogleAuthProvider();
+    const providerGitHub = new GithubAuthProvider();
+
+    const handleGoogleSignIn = () => {
+        signInProvider(providerGoogle)
+            .then((result) => console.log(result.user))
+            .catch((error) => console.error(error))
+    }
+
+    const handleGitHubSignIn = () => {
+        signInProvider(providerGitHub)
+            .then((result) => console.log(result.user))
+            .catch((error) => console.error(error))
     }
 
     return (
@@ -73,8 +94,8 @@ const Register = () => {
                 </Col>
                 <Col lg="3">
                     <div className='d-flex flex-column mt-4 pt-2'>
-                        <Button className='mb-3' variant='outline-light'><FaGoogle></FaGoogle> Continue with Google</Button>
-                        <Button variant='outline-light'><FaGithub></FaGithub> Continue with GitHub</Button>
+                        <Button onClick={handleGoogleSignIn} className='mb-3' variant='outline-light'><FaGoogle></FaGoogle> Continue with Google</Button>
+                        <Button onClick={handleGitHubSignIn} variant='outline-light'><FaGithub></FaGithub> Continue with GitHub</Button>
                     </div>
                 </Col>
             </Row>
