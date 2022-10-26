@@ -8,6 +8,7 @@ import FAQ from "../../pages/FAQ/FAQ";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/Shared/Login";
 import Register from "../../pages/Shared/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -31,7 +32,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses/:id/checkout',
                 loader: ({ params }) => fetch(`https://server-code-with-onion.vercel.app/courses/${params.id}`),
-                element: <CheckOut></CheckOut>
+                element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
             },
             {
                 path: '/faq',

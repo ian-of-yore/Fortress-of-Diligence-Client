@@ -20,7 +20,7 @@ const Header = () => {
             .catch((error) => console.error(error))
     }
 
-    console.log(user);
+    // console.log(user);
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">

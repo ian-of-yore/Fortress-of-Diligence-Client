@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
@@ -14,6 +14,10 @@ const Login = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const { signInEmailPassword, signInProvider } = useContext(AuthContext);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
@@ -26,6 +30,7 @@ const Login = () => {
                 setSuccess("You've verified your credentials! Welcome!");
                 setError('');
                 form.reset();
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 const errorMessage = (((error.message).split(' ')[2]).split('/')[1]).slice(0, -2);
@@ -42,6 +47,7 @@ const Login = () => {
             .then((result) => {
                 setSuccess("You've verified your credentials! Welcome!");
                 setError('');
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 const errorMessage = (((error.message).split(' ')[2]).split('/')[1]).slice(0, -2);
@@ -55,6 +61,7 @@ const Login = () => {
             .then((result) => {
                 setSuccess("You've verified your credentials! Welcome!");
                 setError('');
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 const errorMessage = (((error.message).split(' ')[2]).split('/')[1]).slice(0, -2);

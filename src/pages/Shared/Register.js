@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
@@ -13,9 +13,11 @@ const Register = () => {
     const [termsAndConditions, setTermsAndConditions] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-
     const { signInProvider, createUser, updateUserProfile } = useContext(AuthContext);
 
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
@@ -33,6 +35,7 @@ const Register = () => {
                     setSuccess("Registration Successfull");
                     setError('');
                     form.reset();
+                    navigate(from, { replace: true })
                     updateUserProfile({
                         displayName: name,
                         photoURL: photo
@@ -62,6 +65,7 @@ const Register = () => {
             .then((result) => {
                 setSuccess("You've verified your credentials! Welcome!");
                 setError('');
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 const errorMessage = (((error.message).split(' ')[2]).split('/')[1]).slice(0, -2);
@@ -75,6 +79,7 @@ const Register = () => {
             .then((result) => {
                 setSuccess("You've verified your credentials! Welcome!");
                 setError('');
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 const errorMessage = (((error.message).split(' ')[2]).split('/')[1]).slice(0, -2);
