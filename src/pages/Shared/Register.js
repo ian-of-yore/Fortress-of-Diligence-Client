@@ -11,8 +11,10 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Register = () => {
     const [termsAndConditions, setTermsAndConditions] = useState(false);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
-    const { signInProvider } = useContext(AuthContext);
+    const { signInProvider, createUser } = useContext(AuthContext);
 
 
     const handleFormSubmit = (event) => {
@@ -23,7 +25,21 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
-        console.log(name, photo, email, password, confirmPassword)
+        // console.log(name, photo, email, password, confirmPassword)
+        if (password === confirmPassword) {
+            createUser(email, password)
+                .then((result) => {
+                    console.log(result.user)
+                    setSuccess("Registration Successfull")
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
+        else {
+            setError("Password did not match. Try Again!")
+        }
+
     }
 
     const handleTermsAndConditions = (event) => {
@@ -63,18 +79,21 @@ const Register = () => {
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" name='email' placeholder="Enter email" />
+                            <Form.Control type="email" name='email' placeholder="Enter email" required />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" name='password' placeholder="Password" />
+                            <Form.Control type="password" name='password' placeholder="Password" required />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
                             <Form.Label>Confirm Password</Form.Label>
-                            <Form.Control type="password" name='confirmPassword' placeholder="Confirm Password" />
+                            <Form.Control type="password" name='confirmPassword' placeholder="Confirm Password" required />
                         </Form.Group>
+
+                        <p><small className='text-success'>{success}</small></p>
+                        <p><small className='text-danger'>{error}</small></p>
 
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check onClick={handleTermsAndConditions} type="checkbox" label="Accept Terms and Conditions" />
