@@ -14,7 +14,7 @@ const Register = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
-    const { signInProvider, createUser } = useContext(AuthContext);
+    const { signInProvider, createUser, updateUserProfile } = useContext(AuthContext);
 
 
     const handleFormSubmit = (event) => {
@@ -25,14 +25,18 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
-        // console.log(name, photo, email, password, confirmPassword)
+        console.log(name, photo, email, password, confirmPassword)
         if (password === confirmPassword) {
             createUser(email, password)
                 .then((result) => {
-                    // console.log(result.user)
+                    console.log(result.user)
                     setSuccess("Registration Successfull");
                     setError('');
                     form.reset();
+                    updateUserProfile({
+                        displayName: name,
+                        photoURL: photo
+                    })
                 })
                 .catch((error) => {
                     const errorMessage = (((error.message).split(' ')[2]).split('/')[1]).slice(0, -2);
