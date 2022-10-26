@@ -90,7 +90,7 @@ const Register = () => {
 
     return (
         <Container className='my-5 w-75' style={{ minHeight: "75vh" }}>
-            <h3 className='text-white'>Register Your Credentials</h3>
+            <h3 className='text-white w-50 mx-auto'>Register Your Credentials</h3>
             <Row>
                 <Col lg="9">
                     <Form onSubmit={handleFormSubmit} className='text-white text-start w-75 mx-auto'>

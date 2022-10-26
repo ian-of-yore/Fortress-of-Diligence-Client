@@ -73,7 +73,7 @@ const Login = () => {
 
     return (
         <Container className='mt-5' style={{ minHeight: "75vh" }}>
-            <h3 className='text-white'>Verify Your Credentials</h3>
+            <h3 className='text-white text-center'>Verify Your Credentials</h3>
             <Form onSubmit={handleFormSubmit} className='text-white text-start w-50 mx-auto'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
