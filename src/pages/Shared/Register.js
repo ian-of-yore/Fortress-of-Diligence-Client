@@ -29,15 +29,19 @@ const Register = () => {
         if (password === confirmPassword) {
             createUser(email, password)
                 .then((result) => {
-                    console.log(result.user)
-                    setSuccess("Registration Successfull")
+                    // console.log(result.user)
+                    setSuccess("Registration Successfull");
+                    setError('');
+                    form.reset();
                 })
                 .catch((error) => {
-                    console.log(error)
+                    const errorMessage = (((error.message).split(' ')[2]).split('/')[1]).slice(0, -2);
+                    setError(errorMessage);
                 })
         }
         else {
             setError("Password did not match. Try Again!")
+            setSuccess('');
         }
 
     }
@@ -51,14 +55,28 @@ const Register = () => {
 
     const handleGoogleSignIn = () => {
         signInProvider(providerGoogle)
-            .then((result) => console.log(result.user))
-            .catch((error) => console.error(error))
+            .then((result) => {
+                setSuccess("You've verified your credentials! Welcome!");
+                setError('');
+            })
+            .catch((error) => {
+                const errorMessage = (((error.message).split(' ')[2]).split('/')[1]).slice(0, -2);
+                setError(errorMessage);
+                setSuccess('');
+            })
     }
 
     const handleGitHubSignIn = () => {
         signInProvider(providerGitHub)
-            .then((result) => console.log(result.user))
-            .catch((error) => console.error(error))
+            .then((result) => {
+                setSuccess("You've verified your credentials! Welcome!");
+                setError('');
+            })
+            .catch((error) => {
+                const errorMessage = (((error.message).split(' ')[2]).split('/')[1]).slice(0, -2);
+                setError(errorMessage);
+                setSuccess('');
+            })
     }
 
     return (
@@ -69,12 +87,12 @@ const Register = () => {
                     <Form onSubmit={handleFormSubmit} className='text-white text-start w-75 mx-auto'>
                         <Form.Group className="mb-3" controlId="formBasicUserName">
                             <Form.Label>Full name</Form.Label>
-                            <Form.Control type="text" name='name' placeholder="Enter your full name" />
+                            <Form.Control type="text" name='name' placeholder="Enter your full name" required />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPhotoURL">
                             <Form.Label>Photo URL</Form.Label>
-                            <Form.Control type="text" name='photoURL' placeholder="Your PhotoURL" />
+                            <Form.Control type="text" name='photoURL' placeholder="Your PhotoURL" required />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">

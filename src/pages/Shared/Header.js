@@ -45,7 +45,7 @@ const Header = () => {
                                     <>
                                         <p data-toggle="tooltip"
                                             data-placement="top"
-                                            title={user?.displayName}>
+                                            title={user?.displayName ? user?.displayName : 'Username Unavailable'}>
                                             {
                                                 user?.photoURL ? <Image roundedCircle src={user?.photoURL} style={{ height: '30px' }}></Image> : <FaUserNinja></FaUserNinja>
                                             }

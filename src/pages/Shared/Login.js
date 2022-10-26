@@ -11,6 +11,8 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
 
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
     const { signInEmailPassword, signInProvider } = useContext(AuthContext);
 
     const handleFormSubmit = (event) => {
@@ -20,8 +22,16 @@ const Login = () => {
         const password = form.password.value;
         // console.log(email, password)
         signInEmailPassword(email, password)
-            .then((result) => { })
-            .catch((error) => console.error(error))
+            .then((result) => {
+                setSuccess("You've verified your credentials! Welcome!");
+                setError('');
+                form.reset();
+            })
+            .catch((error) => {
+                const errorMessage = (((error.message).split(' ')[2]).split('/')[1]).slice(0, -2);
+                setError(errorMessage);
+                setSuccess('');
+            })
     }
 
     const providerGoogle = new GoogleAuthProvider();
@@ -29,15 +39,30 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         signInProvider(providerGoogle)
-            .then((result) => console.log(result.user))
-            .catch((error) => console.error(error))
+            .then((result) => {
+                setSuccess("You've verified your credentials! Welcome!");
+                setError('');
+            })
+            .catch((error) => {
+                const errorMessage = (((error.message).split(' ')[2]).split('/')[1]).slice(0, -2);
+                setError(errorMessage);
+                setSuccess('');
+            })
     }
 
     const handleGitHubSignIn = () => {
         signInProvider(providerGitHub)
-            .then((result) => console.log(result.user))
-            .catch((error) => console.error(error))
+            .then((result) => {
+                setSuccess("You've verified your credentials! Welcome!");
+                setError('');
+            })
+            .catch((error) => {
+                const errorMessage = (((error.message).split(' ')[2]).split('/')[1]).slice(0, -2);
+                setError(errorMessage);
+                setSuccess('');
+            })
     }
+
 
     return (
         <Container className='mt-5' style={{ minHeight: "75vh" }}>
@@ -52,6 +77,9 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name='password' placeholder="Password" />
                 </Form.Group>
+
+                <p><small className='text-success'>{success}</small></p>
+                <p><small className='text-danger'>{error}</small></p>
 
                 <div className='d-flex justify-content-between align-items-center'>
                     <div>

@@ -40,7 +40,7 @@ const CourseDetails = () => {
                 <Card.Text className='mt-1 mb-3 mx-4 shadow-lg px-4 py-2'>
                     {details}
                 </Card.Text>
-                <Button variant="outline-light">Go somewhere</Button>
+                <Button variant="outline-light">Get premium access</Button>
 
             </Card>
         </Container>
