@@ -13,7 +13,7 @@ const Home = () => {
             </div>
             <Container className='mt-5'>
                 <Row className='d-flex justify-content-center align-items-center mb-4'>
-                    <Col lg="6">
+                    <Col lg="6" className='order-1 order-lg-0'>
                         <div className='pb-5'>
                             <h1 className='display-4'>Solidify Your Aspirations</h1>
                             <p>Start, switch, or advance your career with new skills, deepen existing passions, and get lost in creativity. What you find just might surprise and inspire you.</p>
@@ -21,8 +21,8 @@ const Home = () => {
                             <Button variant='outline-light' size="lg" className='mt-4'>Try for Business</Button>
                         </div>
                     </Col>
-                    <Col lg="6">
-                        <img className='img-fluid rounded' src={homeImage} alt="" />
+                    <Col lg="6" className='order-0 order-lg-1'>
+                        <img className='img-fluid rounded shadow-lg' src={homeImage} alt="" />
                     </Col>
                 </Row>
             </Container>
