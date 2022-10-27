@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useLoaderData, Link } from 'react-router-dom';
@@ -26,19 +26,27 @@ const CourseDetails = () => {
                 </div>
                 <Card.Img variant="top" className='bg-light' src={image_url} style={{ height: "450px" }} />
                 {/* <img src={image_url} className="bg-light"  alt="" /> */}
-                <div className='d-flex justify-content-around mt-4  text-center'>
-                    <div className='px-5 py-2 text-white shadow-lg rounded'>
-                        <h5>{info.students}</h5>
-                        <p className='mb-0'>Students</p>
-                    </div>
-                    <div className='px-5 py-2 text-white shadow-lg rounded'>
-                        <h5>{info.duration}</h5>
-                        <p className='mb-0'>Duration</p>
-                    </div>
-                    <div className=' px-5 py-2text-white shadow-lg rounded'>
-                        <h5>{info.difficulty}</h5>
-                        <p className='mb-0'>Difficulty</p>
-                    </div>
+                <div>
+                    <Row className='d-flex justify-content-around mt-4  text-center'>
+                        <Col lg="4" sm="12">
+                            <div className='px-5 py-2 text-white shadow-lg rounded'>
+                                <h5>{info.students}</h5>
+                                <p className='mb-0'>Students</p>
+                            </div>
+                        </Col>
+                        <Col lg="4" sm="12">
+                            <div className='px-5 py-2 text-white shadow-lg rounded'>
+                                <h5>{info.duration}</h5>
+                                <p className='mb-0'>Duration</p>
+                            </div>
+                        </Col>
+                        <Col lg="4" sm="12">
+                            <div className=' px-5 py-2 text-white shadow-lg rounded'>
+                                <h5>{info.difficulty}</h5>
+                                <p className='mb-0'>Difficulty</p>
+                            </div>
+                        </Col>
+                    </Row>
                 </div>
                 <div className='my-4 px-4 shadow-lg py-2 mx-4'>
                     <h5>Instructor: {author.name}</h5>
