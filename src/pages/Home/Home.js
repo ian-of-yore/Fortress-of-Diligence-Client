@@ -12,7 +12,7 @@ const Home = () => {
                 <p>Upskill your team with world-class learning. <u>New customers can claim 10% discount.</u> <AiOutlineClose></AiOutlineClose> </p>
             </div>
             <Container className='mt-5'>
-                <Row className='d-flex align-items-center mb-4'>
+                <Row className='d-flex justify-content-center align-items-center mb-4'>
                     <Col lg="6">
                         <div className='pb-5'>
                             <h1 className='display-4'>Solidify Your Aspirations</h1>

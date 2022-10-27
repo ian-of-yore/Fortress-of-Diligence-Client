@@ -14,7 +14,7 @@ const Courses = () => {
             <Container>
                 <Row>
                     <Col lg="3">
-                        <div>
+                        <div className='course-name'>
                             {
                                 courses.map(course => <LeftSideNav
                                     key={course.course_id}

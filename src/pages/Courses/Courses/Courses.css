@@ -2,5 +2,14 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 20px;
-    /* background-color: rgb(52, 50, 50); */
+}
+
+@media only screen and (max-width: 568px) {
+    .course-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .course-name {
+        text-align: center;
+    }
 }
